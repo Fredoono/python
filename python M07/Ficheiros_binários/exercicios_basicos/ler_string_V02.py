@@ -7,7 +7,7 @@ with open('strings.bin','rb') as ficheiro:
         if not temp:
             break
         texto  = struct.unpack('50s', temp)[0]
-        texto_limpo= texto.decode('utf-8').rstrip('\x00')
+        texto_limpo = texto.decode('utf-8').rstrip('\x00')
         print (texto_limpo)
     posição = int(input("qual o texto a ler: "))
     posição = (posição-1)*50
