@@ -1,5 +1,5 @@
 #Frederico Sousa 24585
-import utils, os, datetime
+import utils, os
 nome_ficheiro = "tarefas.txt"
 
 #adicionar tarefa
@@ -25,16 +25,21 @@ def adicionar():
 def listar():
     """Função para listar as tarefas"""
     if os.path.exists(nome_ficheiro) == False:
+        print ("Ainda nao existe o ficheiro")
         return
     with(open(nome_ficheiro,"r",encoding="utf-8")) as ficheiro:
+        l = 1
         while True:
             linha = ficheiro.readline()
             if not linha:
                 break
             tarefa = linha.split("-")
-            print (f"{tarefa[2]} - {tarefa[3]} conclusão:{tarefa[1]}")
+            print (F"tarefa nº{l}:")
+            print (f"{tarefa[2]} - {tarefa[3]} conclusão:{tarefa[1]},")
             print (tarefa[0])
             print ("-"*29)
+            l+= 1
+        #VERSAO 2 LINHAS = FICHEIRO.READLINES() || FOR I,LINHA IN ENUMERATE(LINHAS1): || PRINT(F"{I}-{LINHA}",END="")
 
 #remover tarefas
 def apagar():
@@ -55,6 +60,17 @@ def apagar():
     #apagar o ficheiro
     os.remove(nome_ficheiro)
     os.rename("temp.txt",nome_ficheiro)
+    """
+    numero = input
+    numero = -1
+    with(open(nome_ficheiro,"r",encoding="utf-8")) as ficheiro:
+        linhas = ficheiro.readlines()
+    with(open(nome_ficheiro,"w",encoding="utf-8")) as ficheiro:
+        for i in range(len(linhas)):
+            if i!= numero:
+                ficheiro.write(linha[i])
+    print("tarefa removida com sucesso")
+    """
             
         
         
